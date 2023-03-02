@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        #form{
+            height: 300px;
+            width: 200px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            margin-left: 10px;
+        }
+        img{
+            height: 70px;
+            width: 70px;
+        }
+        .check{
+            height: 20px;
+            width: 50px;
+            border: 5px solid black;
+        }
+        .divs{
+            width: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #hed{
+            height: 50px;
+            background-color: azure;
+            padding: 10px;
+        }
+        #h3{
+            height: 20px;
+            padding: 10px;
+        }
+        #container{
+            display: flex;
+        }
+        #forimgdiv{
+            height:auto;
+            width: auto;
+            display:flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-left: 50px;
+        }
+        #image{
+            height: 170px;
+            width: 300px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+        }
+        .butt{
+            margin: 5px;
+            background-color: rgb(255, 76, 136);
+            border: 0px;
+            height: 30px;
+            width: 70px;
+            border-radius: 5px;
+            color: white;
+        }
+        #orderid{
+           color: gray;
+           margin-left: 10px;
+        }
+        #pname{
+            color:rgb(85, 77, 77);
+            margin-left: 10px;
+        }
+        #imgdiv{
+            height: 220px;
+            width: 300px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hed">McDonald’s</h1>
+    <h3 id="h3">Please order Now</h3>
+    <div id="container">
+        <form action="" id="form">
+            <div class="divs">
+                <label for="ver1">Pizza</label>
+                <input class="check" id="ver1" type="checkbox" value="Pizza">
+            </div>
+            <br>
+            <div class="divs">
+                <label for="ver2">Barger</label>
+                <input class="check" id="ver2" type="checkbox" value="Burger">
+            </div>
+            <br>
+            <div class="divs">
+                <label for="ver3"> Chaat</label>
+                <input class="check" id="ver3" type="checkbox" value="Chaat">
+            </div>
+            <br>
+            <div class="divs">
+                <label for="ver4">Samosa</label>
+                <input class="check" id="ver4" type="checkbox" value="Samosa">
+            </div>
+            <br>
+            <div class="divs">
+                <label for="ver5">Pasta</label>
+                <input class="check" id="ver5" type="checkbox" value="Pasta">
+            </div>
+            <input class="butt" type="submit" value="Order">
+            <button class="butt" id="resat" onclick="resatpage()">Resat</button>
+        </form>
+        <div id="forimgdiv">
+    
+        </div>
+</div>
+</body>
+</html>
+<script>
+    document.querySelector("#forimgdiv")==null
+
+    document.querySelector("#form").addEventListener("submit",forOrder);
+    function forOrder(){
+        var container = document.querySelector("#forimgdiv");
+            container.innerHTML=null
+
+        event.preventDefault()
+        var array =[];
+        var arr = [];
+
+        var veh= document.querySelector("#ver1");
+        let jho= veh.checked;
+        let piz = veh.value;
+        
+        var veg= document.querySelector("#ver2");
+        let cho = veg.checked;
+        let Burge = veg.value;
+    
+
+        var cha = document.querySelector("#ver3");
+        let chaat = cha.checked;
+        let chaa = cha.value;
+     
+
+        var sam = document.querySelector("#ver4");
+        let samo = sam.checked;
+        let samos = sam.value
+
+
+        var pas = document.querySelector("#ver5");
+        let past = pas.checked;
+        let pasta = pas.value
+
+        arr.push(jho,cho,chaat,samo,past)
+        array.push(piz,Burge,chaa,samos,pasta)
+        let count = 0;
+        for(let i=0;i<arr.length;i++){
+            let content = new Promise(function(resolve,reject){
+                    setTimeout(function(){
+                    if(arr[i]==true){
+                        resolve(array[i]);
+                    }
+                   },Math.random()*1000)
+            })
+            console.log(content)
+    
+            content.then(function(value){
+                let Donald = [
+                    {name:"Pizza",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870"},
+                    {name:"Burger",img:"https://media.istockphoto.com/photos/cheeseburger-with-tomato-and-lettuce-on-wooden-board-picture-id1309352410?b=1&k=20&m=1309352410&s=170667a&w=0&h=YduYl7Us5MSrw1EFSCxR9zDRLnEFa_O608NdqhHlSyM="},
+                    {name:"Chaat",img:"https://media.istockphoto.com/photos/misal-pav-or-misalpav-misal-pav-with-farsan-traditional-indian-spicy-picture-id899967700?b=1&k=20&m=899967700&s=170667a&w=0&h=GUkx-gYT0ClwsDteNhArYcJfBZ2Tt3IcNIwWLmtFobw="},
+                    {name:"Samosa",img:"https://media.istockphoto.com/photos/meat-samosa-picture-id1364775147?b=1&k=20&m=1364775147&s=170667a&w=0&h=6OmZCNyGUSSLg4xBwIxcW2Xhogp46bbK5qJEdMN3sWs="},
+                    {name:"Pasta",img:"https://images.unsplash.com/photo-1551183053-bf91a1d81141?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGFzdGF8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=600"}
+                ]
+                for(let j=0;j<Donald.length;j++){
+                    if((Donald[j].name)==value){
+                        var forimg = document.createElement("img");
+                            forimg.setAttribute("src",Donald[j].img);
+                            forimg.setAttribute("id","image");
+
+                        var forname = document.createElement("h3");
+                            forname.innerText=value;
+                            forname.setAttribute("id","pname")
+
+                        var forid = document.createElement("h4");
+                            forid.innerText = "Order id : "+Math.random();
+                            forid.setAttribute("id","orderid")
+                        
+                        var imgdiv = document.createElement("div");
+                            imgdiv.append(forimg,forname,forid)
+                            imgdiv.setAttribute("id","imgdiv")
+                            
+                            
+                        console.log(Donald[j].name)
+                        container.append(imgdiv)
+                    }
+                }
+            })
+        }
+    }
+
+    function resatpage(){
+        window.location.reload()
+    }
+
+</script>
